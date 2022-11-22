@@ -5,28 +5,9 @@
 			"referenceName": "SQL_DB",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"schema1": {
-				"type": "string",
-				"defaultValue": "SalesLT"
-			},
-			"tableName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": {
-				"value": "@dataset().schema1",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@dataset().tableName",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
