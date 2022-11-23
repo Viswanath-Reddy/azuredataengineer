@@ -1,0 +1,10 @@
+{
+	"containerName": {
+		"type": "string",
+		"value": "product"
+	},
+	"schemaNameGlobal": {
+		"type": "string",
+		"value": "salesLT"
+	}
+}
