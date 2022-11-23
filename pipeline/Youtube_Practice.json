@@ -17,8 +17,23 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('select * from saleslt.', variables('tableName'))",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
 					},
 					"enableStaging": false
 				},
@@ -26,6 +41,18 @@
 					{
 						"referenceName": "SQL_Parameters_DataSet",
 						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Destination",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@concat(variables('tableName'),formatDateTime(utcnow(),'MM_DD_YYYY_HH:MM:SS'),'.csv')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
