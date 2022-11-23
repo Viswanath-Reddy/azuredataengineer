@@ -1,0 +1,73 @@
+{
+	"name": "Append current date to Filename using CopyData Activity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('select * from saleslt.', variables('tableName'))",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_Parameters_DataSet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Destination",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@concat(variables('tableName'),'_',formatDateTime(utcnow(),'MM_dd_yyyy_hh:mm:ss'),'.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"variables": {
+			"tableName": {
+				"type": "String",
+				"defaultValue": "Customer"
+			}
+		},
+		"folder": {
+			"name": "Sessions"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-18T07:10:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,21 @@
+{
+	"name": "practiceazuredatafactory7thoct",
+	"properties": {
+		"globalParameters": {
+			"containerName": {
+				"type": "string",
+				"value": "product"
+			},
+			"schemaNameGlobal": {
+				"type": "string",
+				"value": "salesLT"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "335eabb3-f884-4b2b-94bd-89c5c07b5acd",
+		"tenantId": "2be218e5-e08b-473e-a362-6d0308fc90de"
+	}
+}
