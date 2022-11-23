@@ -55,7 +55,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('Lookup1').output.firstRow.cnt, 1000)",
+									"value": "@equals(activity('Lookup1').output.firstRow.cnt, 847)",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [

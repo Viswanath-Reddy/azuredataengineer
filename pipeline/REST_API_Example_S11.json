@@ -48,22 +48,6 @@
 								},
 								"enableStaging": false
 							},
-							"inputs": [
-								{
-									"referenceName": "REST_API_DS_Session11",
-									"type": "DatasetReference",
-									"parameters": {
-										"countryName": {
-											"value": "@concat('/v3.1/name/', item())",
-											"type": "Expression"
-										},
-										"listOfCodes": {
-											"value": "@contains('/v3.1/alpha?codes=', item())",
-											"type": "Expression"
-										}
-									}
-								}
-							],
 							"outputs": [
 								{
 									"referenceName": "Destination",
