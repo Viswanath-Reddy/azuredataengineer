@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -113,11 +114,12 @@
 							]
 						},
 						{
-							"name": "Set variable1",
+							"name": "Set_Variable",
+							"description": "Set variable activity will help us to verify list of files copied with details. Set variable will help as to mention this in email after files copied from one container to other.",
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "Append variable1",
+									"activity": "Append_Variable",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -133,7 +135,8 @@
 							}
 						},
 						{
-							"name": "Append variable1",
+							"name": "Append_Variable",
+							"description": "Verifying that list of files moved from one containerto another",
 							"type": "AppendVariable",
 							"dependsOn": [
 								{
