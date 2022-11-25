@@ -55,7 +55,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "GettheCountOfFilesToCopy",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -73,7 +73,7 @@
 					},
 					"activities": [
 						{
-							"name": "Copy data1",
+							"name": "CopytheFilteredFilesfromoneCtoC",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
