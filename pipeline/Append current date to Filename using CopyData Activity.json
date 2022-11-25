@@ -46,13 +46,7 @@
 				"outputs": [
 					{
 						"referenceName": "Destination",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileName": {
-								"value": "@concat(variables('tableName'),'_',formatDateTime(utcnow(),'MM_dd_yyyy_hh:mm:ss'),'.csv')",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
