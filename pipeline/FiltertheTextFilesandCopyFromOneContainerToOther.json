@@ -1,0 +1,63 @@
+{
+	"name": "FiltertheTextFilesandCopyFromOneContainerToOther",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetListOfItemsfromBlob",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Source",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "FiltercontaingonlyTextFiles",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "GetListOfItemsfromBlob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetListOfItemsfromBlob').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endswith(item().name,'txt') ",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Sessions"
+		},
+		"annotations": []
+	}
+}
