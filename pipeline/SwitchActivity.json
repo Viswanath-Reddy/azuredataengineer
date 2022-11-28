@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.Actitivy",
+						"type": "Expression"
+					},
 					"cases": [
 						{
 							"value": "Case1",
@@ -112,6 +116,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"Actitivy": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Sessions"
 		},
