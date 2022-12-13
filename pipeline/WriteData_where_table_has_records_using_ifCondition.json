@@ -140,6 +140,8 @@
 		"folder": {
 			"name": "Sessions"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2022-11-23T10:27:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

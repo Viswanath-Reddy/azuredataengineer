@@ -1,0 +1,17 @@
+{
+	"name": "TestTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 2,
+				"startTime": "2022-10-31T17:12:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

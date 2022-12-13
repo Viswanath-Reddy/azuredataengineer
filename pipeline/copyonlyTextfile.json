@@ -1,9 +1,9 @@
 {
-	"name": "Append current date to Filename using CopyData Activity",
+	"name": "copyonlyTextfile",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "TextFiles1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,13 +16,17 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('select * from saleslt.', variables('tableName'))",
-							"type": "Expression"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "test",
+							"wildcardFileName": "*.txt",
+							"enablePartitionDiscovery": false
 						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -35,39 +39,35 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "SQL_Parameters_DataSet",
+						"referenceName": "Source",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "Destination",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileName": {
-								"value": "@concat(variables('tableName'),'_',formatDateTime(utcnow(),'MM_dd_yyyy_hh:mm:ss'),'.csv')",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"variables": {
-			"tableName": {
-				"type": "String",
-				"defaultValue": "Customer"
-			}
-		},
 		"folder": {
-			"name": "Sessions"
+			"name": "youtubePractice"
 		},
 		"annotations": [],
-		"lastPublishTime": "2022-11-23T10:27:43Z"
+		"lastPublishTime": "2022-11-18T12:43:05Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
