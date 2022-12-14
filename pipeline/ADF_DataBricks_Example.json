@@ -15,7 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/ade.viswanath@hotmail.com/Test_ADF_Connection"
+					"notebookPath": "/Users/ade.viswanath@hotmail.com/Test_ADF_Connection",
+					"baseParameters": {
+						"filePath": "dbfs:/FileStore/shared_uploads/ade.viswanath@hotmail.com/Order.csv"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricksLS",
